@@ -10,7 +10,7 @@ const { ui } = c;
 const index = ["home", "projects", "experience"].indexOf(page);
 const other = contentByLocale[locale === "en" ? "zh-TW" : "en"];
 const switchHref = other.nav[index]?.href ?? "/";
-const sections = page === "home" ? [] : c.pages[page];
+const sections = page === "home" ? [] : (c.pages[page] ?? []);
 const title = page === "home" ? c.name : `${c.nav[index]?.label ?? ""} · ${c.name}`;
 ---
 <Base title={title} lang={c.lang}>
