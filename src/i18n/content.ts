@@ -11,7 +11,7 @@ export type Section =
 export type Info = { label: string; value?: string; href?: string; items?: string[] };
 export type Content = {
   lang: string; name: string; tags: string[]; intro: string;
-  banner: { src: string; alt: string };
+  photo: { src: string; alt: string };
   socials: { label: string; href: string; icon: string }[];
   info: Info[];
   buttons: { label: string; href: string }[];
@@ -28,7 +28,7 @@ export const contentByLocale: Record<Locale, Content> = {
   en: {
     lang: "en", name: "Your Name", tags: ["Tag One", "Tag Two", "Tag Three"],
     intro: "Hi, I'm Your Name — write two or three sentences about what you study and build.",
-    banner: { src: "/banner.svg", alt: "Banner" }, socials,
+    photo: { src: "/w.png", alt: "Photo" }, socials,
     info: [
       { label: "Email", value: "you@example.com", href: "mailto:you@example.com" },
       { label: "Bio", items: ["Your University - Department", "Role or achievement", "Another role"] },
@@ -40,7 +40,7 @@ export const contentByLocale: Record<Locale, Content> = {
   "zh-TW": {
     lang: "Zanen", name: "贊恩", tags: ["鋼琴", "西洋棋", "多準則決策"],
     intro: "嗨，我是贊恩，目前研究領域是多準則決策，也對資料科學、決策科學感興趣，我喜歡彈動漫鋼琴還有下西洋棋。",
-    banner: { src: "/banner.svg", alt: "橫幅" }, socials,
+    photo: { src: "/w.png", alt: "Photo" }, socials,
     info: [
       { label: "信箱", value: "you@example.com", href: "mailto:you@example.com" },
       { label: "簡介", items: ["雲林科技大學", "職務或成就", "另一個職務"] },

@@ -16,32 +16,36 @@ const { ui } = c;
     <a class="lang" href={ui.switchHref}>{ui.switchLabel}</a>
   </header>
 
-  <section class="hero" data-intro>
-    <img class="banner" src={c.banner.src} alt={c.banner.alt} width="1280" height="410" />
-    <h1>{c.name}</h1>
-    <p class="tags">{c.tags.map((t) => `#${t}`).join(" ")}</p>
-    <ul class="socials">
-      {c.socials.map((s) => (
-        <li><a href={s.href} aria-label={s.label} rel="noreferrer"><Icon name={s.icon} /></a></li>
-      ))}
-    </ul>
-    <p class="intro">{c.intro}</p>
-    <dl class="info">
-      {c.info.map((i) => (
-        <div class="info-row">
-          <dt>{i.label}</dt>
-          <dd>
-            {i.items ? <ul>{i.items.map((x) => <li>{x}</li>)}</ul>
-              : i.href ? <a href={i.href}>{i.value}</a> : i.value}
-          </dd>
-        </div>
-      ))}
-    </dl>
+    <section class="hero" data-intro>
+    <div class="hero-main">
+      <div class="hero-text">
+        <h1>{c.name}</h1>
+        <p class="tags">{c.tags.map((t) => `#${t}`).join(" ")}</p>
+        <ul class="socials">
+          {c.socials.map((s) => (
+            <li><a href={s.href} aria-label={s.label} rel="noreferrer"><Icon name={s.icon} /></a></li>
+          ))}
+        </ul>
+        <p class="intro">{c.intro}</p>
+        <dl class="info">
+          {c.info.map((i) => (
+            <div class="info-row">
+              <dt>{i.label}</dt>
+              <dd>
+                {i.items ? <ul>{i.items.map((x) => <li>{x}</li>)}</ul>
+                  : i.href ? <a href={i.href}>{i.value}</a> : i.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <img class="photo" src={c.photo.src} alt={c.photo.alt} width="758" height="758" />
+    </div>
     <nav class="actions">
       {c.buttons.map((b) => <a class="box" href={b.href}>{b.label}</a>)}
     </nav>
   </section>
-
+  
   {c.sections.map((s) => (
     <section id={s.id} data-intro>
       <h2>{s.title}</h2>

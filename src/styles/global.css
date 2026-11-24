@@ -8,7 +8,7 @@
 * { box-sizing: border-box; }
 html { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.7; }
 body { margin: 0; }
-main { max-width: 40rem; margin: 0 auto; padding: 1.5rem 1.25rem 5rem; display: grid; gap: 3.5rem; }
+main { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1.25rem 5rem; display: grid; gap: 3.5rem; }
 a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 0.25em; }
 a:hover { color: var(--accent); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -27,9 +27,15 @@ h3 { font-size: 1rem; }
 [data-theme="light"] .moon, [data-theme="dark"] .sun { display: none; }
 
 /* hero */
-.hero { display: grid; gap: 1.1rem; margin-top: 2rem; }
-.banner { width: 100%; height: auto; aspect-ratio: 1280 / 410; object-fit: cover; display: block; }
-h1 { font-size: clamp(2.6rem, 11vw, 4.5rem); line-height: 1.05; letter-spacing: -0.04em; margin-top: 0.75rem; }
+.hero { display: grid; gap: 1.5rem; margin-top: 2rem; }
+.hero-main { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 2rem; align-items: start; }
+.hero-text { display: grid; gap: 1.1rem; }
+.photo { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+@media (max-width: 720px) {
+  .hero-main { grid-template-columns: 1fr; }
+  .photo { order: -1; width: 12rem; }
+}
+h1 { font-size: clamp(2.6rem, 11vw, 4.5rem); line-height: 1.05; letter-spacing: -0.04em;}
 .tags { color: var(--muted); }
 .socials { display: flex; gap: 1.1rem; }
 .socials a { color: var(--muted); display: grid; }
