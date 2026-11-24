@@ -43,7 +43,7 @@ export const contentByLocale: Record<Locale, Content> = {
     banner: { src: "/banner.svg", alt: "橫幅" }, socials,
     info: [
       { label: "信箱", value: "you@example.com", href: "mailto:you@example.com" },
-      { label: "簡介", items: ["你的大學 - 系所", "職務或成就", "另一個職務"] },
+      { label: "簡介", items: ["雲林科技大學", "職務或成就", "另一個職務"] },
     ],
     buttons: [{ label: "repo", href: "#" }, { label: "resume", href: "#" }],
     sections: [],
