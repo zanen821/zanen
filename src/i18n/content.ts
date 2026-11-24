@@ -22,7 +22,7 @@ export type Content = {
 
 const socials = [
   { label: "GitHub", href: "https://github.com/zanen821", icon: "simple-icons:github" },
-  { label: "Instagram", href: "https://instagram.com/zanen_821", icon: "simple-icons:instagram" },
+  { label: "Instagram", href: "https://instagram.com/zan_en821", icon: "simple-icons:instagram" },
   { label: "Gmail", href: "mailto:easoneason821@gmail.com", icon: "simple-icons:gmail" }
 ];
 
@@ -89,7 +89,6 @@ export const contentByLocale: Record<Locale, Content> = {
   ],
   experience: [
     { type: "list", id: "experience", title: "Experience", items: [
-      { title: "職稱", sub: "單位", meta: "2025 – now" },
       { title: "雲科鋼琴社", sub: "副社長", meta: "2025 – 2026" },
       { title: "開展營晚會表演", sub: "活動副召", meta: "2025/09/02" },
       { title: "社團博覽會", sub: "社團博覽會", meta: "2025/09/10" },
