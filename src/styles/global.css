@@ -31,6 +31,10 @@ h3 { font-size: 1rem; }
 .hero-main { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 2rem; align-items: stretch; }
 .hero-text { display: grid; gap: 1.1rem; }
 .photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-dark { display: none; }
+[data-theme="dark"] .photo-light { display: none; }
+[data-theme="dark"] .photo-dark { display: block; }
+
 @media (max-width: 720px) {
   .hero-main { grid-template-columns: 1fr; }
   .photo { order: -1; width: 12rem; }
@@ -67,3 +71,10 @@ details[open] summary::after { content: "−"; }
 footer { border-top: 1px solid var(--line); padding-top: 1rem; }
 @media (max-width: 520px) { .info-row { grid-template-columns: 1fr; gap: 0.2rem; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.bar { gap: 1rem; }
+.nav { display: flex; gap: 1.25rem; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+.nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 0.4em; }
+@media (max-width: 520px) { .nav { gap: 0.8rem; font-size: 0.9rem; } }

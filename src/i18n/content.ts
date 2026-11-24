@@ -33,7 +33,7 @@ export const contentByLocale: Record<Locale, Content> = {
     photo: { src:"/b.png", srcDark:"/w.png", alt:"個人icon" }, socials,
     info: [
       { label: "Email", value: "easoneason821@gmail.com", href: "mailto:easoneason821@gmail.com" },
-      { label: "Bio", items: ["Your University - Department", "Role or achievement", "Another role"] },
+      { label: "Bio", items: ["Yuntech - Industrial Engineering Management", "Yuntech Piano Club - Vice President", "Prospective Examinee"] },
     ],
     buttons: [{ label: "Blog", href: "#" }, { label: "Resume", href: "#" }],
     nav: [
@@ -61,7 +61,7 @@ export const contentByLocale: Record<Locale, Content> = {
     photo: { src:"/w.png", srcDark:"/b.png", alt:"個人icon" }, socials,
     info: [
       { label: "信箱", value: "easoneason821@gmail.com", href: "mailto:easoneason821@gmail.com" },
-      { label: "簡介", items: ["雲林科技大學", "職務或成就", "另一個職務"] },
+      { label: "簡介", items: ["雲林科技大學 - 工業工程與管理系", "雲科鋼琴社 - 副社長", "準考生"] },
     ],
     buttons: [{ label: "repo", href: "#" }, { label: "resume", href: "#" }],
     nav: [
