@@ -9,7 +9,7 @@ const c = contentByLocale[locale];
 const { ui } = c;
 const index = ["home", "projects", "experience"].indexOf(page);
 const other = contentByLocale[locale === "en" ? "zh-TW" : "en"];
-const switchHref = other.nav[index]?.href ?? "/";
+const switchHref = other.nav[index]?.href ?? other.nav[0]?.href ?? "/";
 const sections = page === "home" ? [] : (c.pages[page] ?? []);
 const title = page === "home" ? c.name : `${c.nav[index]?.label ?? ""} · ${c.name}`;
 ---
@@ -19,13 +19,18 @@ const title = page === "home" ? c.name : `${c.nav[index]?.label ?? ""} · ${c.na
       data-light={ui.light} data-dark={ui.dark}>
       <Icon class="sun" name="lucide:sun" /><Icon class="moon" name="lucide:moon-star" />
     </button>
+    <nav class="nav">
+      {c.nav.map((n, i) => (
+        <a href={n.href} aria-current={i === index ? "page" : undefined}>{n.label}</a>
+      ))}
+    </nav>
     <a class="lang" href={switchHref}>{ui.switchLabel}</a>
   </header>
 
   {page === "home" && (
     <section class="hero" data-intro>
-      <div class="hero-main">
-        <div class="hero-text">
+      <div class="hero-top">
+        <div class="identity">
           <h1>{c.name}</h1>
           <p class="tags">{c.tags.map((t) => `#${t}`).join(" ")}</p>
           <ul class="socials">
@@ -33,26 +38,25 @@ const title = page === "home" ? c.name : `${c.nav[index]?.label ?? ""} · ${c.na
               <li><a href={s.href} aria-label={s.label} rel="noreferrer"><Icon name={s.icon} /></a></li>
             ))}
           </ul>
-          <p class="intro">{c.intro}</p>
-          <dl class="info">
-            {c.info.map((i) => (
-              <div class="info-row">
-                <dt>{i.label}</dt>
-                <dd>
-                  {i.items ? <ul>{i.items.map((x) => <li>{x}</li>)}</ul>
-                    : i.href ? <a href={i.href}>{i.value}</a> : i.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
-        <img class="photo photo-light" src={c.photo.src} alt={c.photo.alt} width="758" height="758" />
-        <img class="photo photo-dark" src={c.photo.srcDark ?? c.photo.src} alt={c.photo.alt}
-          width="758" height="758" loading="lazy" />
+        <div class="photo-col">
+          <img class="photo photo-light" src={c.photo.src} alt={c.photo.alt} width="665" height="665" />
+          <img class="photo photo-dark" src={c.photo.srcDark ?? c.photo.src} alt={c.photo.alt}
+            width="665" height="665" loading="lazy" />
+        </div>
       </div>
-      <nav class="actions">
-        {c.buttons.map((b) => <a class="box" href={b.href}>{b.label}</a>)}
-      </nav>
+      <p class="intro">{c.intro}</p>
+      <dl class="info">
+        {c.info.map((i) => (
+          <div class="info-row">
+            <dt>{i.label}</dt>
+            <dd>
+              {i.items ? <ul>{i.items.map((x) => <li>{x}</li>)}</ul>
+                : i.href ? <a href={i.href}>{i.value}</a> : i.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </section>
   )}
 
@@ -117,7 +121,8 @@ const title = page === "home" ? c.name : `${c.nav[index]?.label ?? ""} · ${c.na
   const sync = () => btn.setAttribute("aria-label",
     (root.dataset.theme === "dark" ? btn.dataset.light : btn.dataset.dark) ?? "");
   sync();
-    btn.addEventListener("click", () => {
+
+  btn.addEventListener("click", () => {
     const next = root.dataset.theme === "dark" ? "light" : "dark";
     const apply = () => {
       root.dataset.theme = next;
