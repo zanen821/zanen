@@ -29,7 +29,7 @@ const socials = [
 export const contentByLocale: Record<Locale, Content> = {
   en: {
     lang: "en", name: "Zanen", tags: ["Piano", "Chess player", "MCDM"],
-    intro: "Hi, I’m Zanen. I served as the Vice President of the Piano Club at National Yunlin University of Science and Technology (YunTech), where I organized a wide variety of events. My current research focus is Multi-Criteria Decision Making (MCDM), and I also have a keen interest in data science, decision science, and system development. In my spare time, I enjoy playing anime music on the piano and playing chess. I’m currently preparing for entrance exams—I really hope to get into a top-tier university!",
+    intro: "Hi, I’m Zanen. I served as the Vice President of the Piano Club at YunTech, where I organized a wide variety of events. My current research focus is Multi-Criteria Decision Making (MCDM), and I also have a keen interest in data science, decision science, and system development. In my spare time, I enjoy playing anime music on the piano and playing chess. I’m currently preparing for entrance exams—I really hope to get into a top-tier university!",
     photo: { src:"/b.png", srcDark:"/w.png", alt:"個人icon" }, socials,
     info: [
       { label: "Email", value: "easoneason821@gmail.com", href: "mailto:easoneason821@gmail.com" },
@@ -58,7 +58,7 @@ export const contentByLocale: Record<Locale, Content> = {
   "zh-TW": {
     lang: "zh-TW", name: "Zanen", tags: ["鋼琴", "西洋棋玩家", "多準則決策"],
     intro: "嗨，我是Zanen，我擔任過雲科鋼琴社副社長，舉辦了各種大大小小的活動，目前研究領域是多準則決策，也對資料科學、決策科學、系統開發感興趣，我喜歡彈動漫鋼琴還有下西洋棋，現在是準考生，好想上頂大啊.....",
-    photo: { src:"/w.png", srcDark:"/b.png", alt:"個人icon" }, socials,
+    photo: { src:"/b.png", srcDark:"/w.png", alt:"個人icon" }, socials,
     info: [
       { label: "信箱", value: "easoneason821@gmail.com", href: "mailto:easoneason821@gmail.com" },
       { label: "簡介", items: ["雲林科技大學 - 工業工程與管理系", "雲科鋼琴社 - 副社長", "準考生"] },

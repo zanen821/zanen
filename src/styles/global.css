@@ -3,8 +3,11 @@
   --font: "JetBrains Mono", ui-monospace, monospace;
 }
 :root[data-theme="dark"] {
-  --bg: #141612; --text: #ece8da; --muted: #9a9e90; --line: #33362d; --accent: #93b39b;
+  --bg: #515150; --text: #f4f1e6; --muted: #d2d0c6; --line: #747473; --accent: #bcd6c1;
 }
+
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
 * { box-sizing: border-box; }
 html { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.7; }
 body { margin: 0; }
