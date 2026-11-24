@@ -3,50 +3,65 @@ import { Icon } from "astro-icon/components";
 import { contentByLocale, type Locale } from "../i18n/content";
 import Base from "../layouts/Base.astro";
 
-const { locale } = Astro.props as { locale: Locale };
+type Page = "home" | "projects" | "experience";
+const { locale, page } = Astro.props as { locale: Locale; page: Page };
 const c = contentByLocale[locale];
 const { ui } = c;
+const index = ["home", "projects", "experience"].indexOf(page);
+const other = contentByLocale[locale === "en" ? "zh-TW" : "en"];
+const switchHref = other.nav[index].href;
+const sections = page === "home" ? [] : c.pages[page];
+const title = page === "home" ? c.name : `${c.nav[index].label} · ${c.name}`;
 ---
-<Base title={c.name} lang={c.lang}>
+<Base title={title} lang={c.lang}>
   <header class="bar">
     <button class="round" id="theme" type="button" aria-label={ui.dark}
       data-light={ui.light} data-dark={ui.dark}>
       <Icon class="sun" name="lucide:sun" /><Icon class="moon" name="lucide:moon-star" />
     </button>
-    <a class="lang" href={ui.switchHref}>{ui.switchLabel}</a>
+    <nav class="nav">
+      {c.nav.map((n, i) => (
+        <a href={n.href} aria-current={i === index ? "page" : undefined}>{n.label}</a>
+      ))}
+    </nav>
+    <a class="lang" href={switchHref}>{ui.switchLabel}</a>
   </header>
 
+  {page === "home" && (
     <section class="hero" data-intro>
-    <div class="hero-main">
-      <div class="hero-text">
-        <h1>{c.name}</h1>
-        <p class="tags">{c.tags.map((t) => `#${t}`).join(" ")}</p>
-        <ul class="socials">
-          {c.socials.map((s) => (
-            <li><a href={s.href} aria-label={s.label} rel="noreferrer"><Icon name={s.icon} /></a></li>
-          ))}
-        </ul>
-        <p class="intro">{c.intro}</p>
-        <dl class="info">
-          {c.info.map((i) => (
-            <div class="info-row">
-              <dt>{i.label}</dt>
-              <dd>
-                {i.items ? <ul>{i.items.map((x) => <li>{x}</li>)}</ul>
-                  : i.href ? <a href={i.href}>{i.value}</a> : i.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
+      <div class="hero-main">
+        <div class="hero-text">
+          <h1>{c.name}</h1>
+          <p class="tags">{c.tags.map((t) => `#${t}`).join(" ")}</p>
+          <ul class="socials">
+            {c.socials.map((s) => (
+              <li><a href={s.href} aria-label={s.label} rel="noreferrer"><Icon name={s.icon} /></a></li>
+            ))}
+          </ul>
+          <p class="intro">{c.intro}</p>
+          <dl class="info">
+            {c.info.map((i) => (
+              <div class="info-row">
+                <dt>{i.label}</dt>
+                <dd>
+                  {i.items ? <ul>{i.items.map((x) => <li>{x}</li>)}</ul>
+                    : i.href ? <a href={i.href}>{i.value}</a> : i.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <img class="photo photo-light" src={c.photo.src} alt={c.photo.alt} width="758" height="758" />
+        <img class="photo photo-dark" src={c.photo.srcDark ?? c.photo.src} alt={c.photo.alt}
+          width="758" height="758" loading="lazy" />
       </div>
-      <img class="photo" src={c.photo.src} alt={c.photo.alt} width="758" height="758" />
-    </div>
-    <nav class="actions">
-      {c.buttons.map((b) => <a class="box" href={b.href}>{b.label}</a>)}
-    </nav>
-  </section>
-  
-  {c.sections.map((s) => (
+      <nav class="actions">
+        {c.buttons.map((b) => <a class="box" href={b.href}>{b.label}</a>)}
+      </nav>
+    </section>
+  )}
+
+  {sections.map((s) => (
     <section id={s.id} data-intro>
       <h2>{s.title}</h2>
       {s.type === "list" && (
@@ -113,7 +128,6 @@ const { ui } = c;
     sync();
   });
 
-  // One entrance: sections settle in order on first paint.
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
     gsap.from("[data-intro]", { opacity: 0, y: 10, duration: 0.5, stagger: 0.08, ease: "power2.out" });
   }
