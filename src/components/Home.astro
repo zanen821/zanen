@@ -1,0 +1,116 @@
+---
+import { Icon } from "astro-icon/components";
+import { contentByLocale, type Locale } from "../i18n/content";
+import Base from "../layouts/Base.astro";
+
+const { locale } = Astro.props as { locale: Locale };
+const c = contentByLocale[locale];
+const { ui } = c;
+---
+<Base title={c.name} lang={c.lang}>
+  <header class="bar">
+    <button class="round" id="theme" type="button" aria-label={ui.dark}
+      data-light={ui.light} data-dark={ui.dark}>
+      <Icon class="sun" name="lucide:sun" /><Icon class="moon" name="lucide:moon-star" />
+    </button>
+    <a class="lang" href={ui.switchHref}>{ui.switchLabel}</a>
+  </header>
+
+  <section class="hero" data-intro>
+    <img class="banner" src={c.banner.src} alt={c.banner.alt} width="1280" height="410" />
+    <h1>{c.name}</h1>
+    <p class="tags">{c.tags.map((t) => `#${t}`).join(" ")}</p>
+    <ul class="socials">
+      {c.socials.map((s) => (
+        <li><a href={s.href} aria-label={s.label} rel="noreferrer"><Icon name={s.icon} /></a></li>
+      ))}
+    </ul>
+    <p class="intro">{c.intro}</p>
+    <dl class="info">
+      {c.info.map((i) => (
+        <div class="info-row">
+          <dt>{i.label}</dt>
+          <dd>
+            {i.items ? <ul>{i.items.map((x) => <li>{x}</li>)}</ul>
+              : i.href ? <a href={i.href}>{i.value}</a> : i.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+    <nav class="actions">
+      {c.buttons.map((b) => <a class="box" href={b.href}>{b.label}</a>)}
+    </nav>
+  </section>
+
+  {c.sections.map((s) => (
+    <section id={s.id} data-intro>
+      <h2>{s.title}</h2>
+      {s.type === "list" && (
+        <ul class="rows">
+          {s.items.map((e) => (
+            <li class="row">
+              <div><h3>{e.title}</h3>{e.sub && <p class="muted">{e.sub}</p>}</div>
+              <p class="muted">{e.meta}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      {s.type === "groups" && s.groups.map((g) => (
+        <div class="group">
+          <p class="muted">{g.label}</p>
+          <ul class="rows">
+            {g.items.map((e) => (
+              <li class="row">
+                <div>
+                  <h3>{e.href ? <a href={e.href} rel="noreferrer">{e.title}</a> : e.title}</h3>
+                  {e.sub && <p class="muted">{e.sub}</p>}
+                </div>
+                <p class="muted">{e.meta}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {s.type === "projects" && (
+        <div class="rows">
+          {s.items.map((p) => (
+            <details>
+              <summary><div><h3>{p.name}</h3><p class="muted">{p.summary}</p></div></summary>
+              <div class="detail">
+                <p>{p.description}</p>
+                <div><p class="muted">{ui.stack}</p><ul class="tag-list">{p.stack.map((t) => <li>{t}</li>)}</ul></div>
+                <div><p class="muted">{ui.highlights}</p><ul>{p.highlights.map((h) => <li>– {h}</li>)}</ul></div>
+                <div class="links">
+                  {p.href && <a class="btn" href={p.href} rel="noreferrer">{ui.visit}</a>}
+                  {p.github && <a class="btn" href={p.github} rel="noreferrer"><Icon name="simple-icons:github" />{ui.code}</a>}
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      )}
+    </section>
+  ))}
+
+  <footer class="muted">© {new Date().getFullYear()} {c.name}</footer>
+</Base>
+
+<script>
+  import { gsap } from "gsap";
+
+  const root = document.documentElement;
+  const btn = document.getElementById("theme") as HTMLButtonElement;
+  const sync = () => btn.setAttribute("aria-label",
+    (root.dataset.theme === "dark" ? btn.dataset.light : btn.dataset.dark) ?? "");
+  sync();
+  btn.addEventListener("click", () => {
+    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch {}
+    sync();
+  });
+
+  // One entrance: sections settle in order on first paint.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    gsap.from("[data-intro]", { opacity: 0, y: 10, duration: 0.5, stagger: 0.08, ease: "power2.out" });
+  }
+</script>
