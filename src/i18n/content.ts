@@ -22,15 +22,16 @@ export type Content = {
 const socials = [
   { label: "GitHub", href: "https://github.com/zanen821", icon: "simple-icons:github" },
   { label: "Instagram", href: "https://instagram.com/your-id", icon: "simple-icons:instagram" },
+  { label: "Gmail", href: "mailto:easoneason821@gmail.com", icon: "simple-icons:gmail" }
 ];
 
 export const contentByLocale: Record<Locale, Content> = {
   en: {
-    lang: "en", name: "Your Name", tags: ["Tag One", "Tag Two", "Tag Three"],
-    intro: "Hi, I'm Your Name — write two or three sentences about what you study and build.",
+    lang: "en", name: "Zanen", tags: ["Piano", "Chess player", "MCDM"],
+    intro: "Hi, I'm Zanen — My current research focus is multi-criteria decision-making, and I also have an interest in data science and decision science. In my spare time, I enjoy playing anime music on the piano and playing chess.",
     photo: { src: "/w.png", alt: "Photo" }, socials,
     info: [
-      { label: "Email", value: "you@example.com", href: "mailto:you@example.com" },
+      { label: "Email", value: "easoneason821@gmail.com", href: "mailto:easoneason821@gmail.com" },
       { label: "Bio", items: ["Your University - Department", "Role or achievement", "Another role"] },
     ],
     buttons: [{ label: "Blog", href: "#" }, { label: "Resume", href: "#" }],
@@ -38,11 +39,11 @@ export const contentByLocale: Record<Locale, Content> = {
     ui: { light: "Switch to light theme", dark: "Switch to dark theme", stack: "// stack", highlights: "// highlights", visit: "Visit", code: "Source", switchLabel: "中文", switchHref: "/zh-tw" },
   },
   "zh-TW": {
-    lang: "Zanen", name: "贊恩", tags: ["鋼琴", "西洋棋", "多準則決策"],
+    lang: "zh-TW", name: "Zanen", tags: ["鋼琴", "西洋棋玩家", "多準則決策"],
     intro: "嗨，我是贊恩，目前研究領域是多準則決策，也對資料科學、決策科學感興趣，我喜歡彈動漫鋼琴還有下西洋棋。",
     photo: { src: "/w.png", alt: "Photo" }, socials,
     info: [
-      { label: "信箱", value: "you@example.com", href: "mailto:you@example.com" },
+      { label: "信箱", value: "easoneason821@gmail.com", href: "mailto:easoneason821@gmail.com" },
       { label: "簡介", items: ["雲林科技大學", "職務或成就", "另一個職務"] },
     ],
     buttons: [{ label: "repo", href: "#" }, { label: "resume", href: "#" }],
