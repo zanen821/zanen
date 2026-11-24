@@ -65,9 +65,9 @@ export const contentByLocale: Record<Locale, Content> = {
     ],
     buttons: [{ label: "repo", href: "#" }, { label: "resume", href: "#" }],
     nav: [
-    { label: "主頁", href: "/" },
-    { label: "專案", href: "/projects" },
-    { label: "經歷", href: "/experience" },],
+    { label: "主頁", href: "/zh-tw" },
+    { label: "專案", href: "/zh-tw/projects" },
+    { label: "經歷", href: "/zh-tw/experience" },],
     pages: {
       projects: [
         { type: "projects", id: "repos", title: "Repos", items: [
