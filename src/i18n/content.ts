@@ -47,7 +47,7 @@ export const contentByLocale: Record<Locale, Content> = {
       stack: ["Python"], highlights: ["MCDM", "Decision Science", "Data Science"],
       href: "https://github.com/zanen821/mcdm-system", github: "https://github.com/zanen821/mcdm-system" },
       { name: "zanen", summary: "Zanen's Portfolio", description: "This is my portfolio website, developed using the Astro framework, supporting multi-language switching and adaptive display on different devices.",
-      stack: ["TypeScript", "Astro","CSS,JavaScript"], highlights: ["Portfolio"],
+      stack: ["TypeScript", "Astro","CSS","JavaScript"], highlights: ["Portfolio"],
       href: "https://github.com/zanen821/zanen", github: "https://github.com/zanen821/zanen" }
      ] },
     ],
@@ -90,7 +90,7 @@ export const contentByLocale: Record<Locale, Content> = {
         stack: ["Python"], highlights: ["MCDM", "Decision Science", "Data Science"],
         href: "https://github.com/zanen821/mcdm-system", github: "https://github.com/zanen821/mcdm-system" },
       { name: "zanen", summary: "Zanen's 履歷網站", description: "這是我的履歷網站，使用Astro框架開發，支援多語系切換，並且可以在不同裝置上自適應顯示。",
-        stack: ["TypeScript", "Astro","CSS,JavaScript"], highlights: ["Portfolio"],
+        stack: ["TypeScript", "Astro","CSS","JavaScript"], highlights: ["Portfolio"],
         href: "https://github.com/zanen821/zanen", github: "https://github.com/zanen821/zanen" }] },
   ],
   experience: [
