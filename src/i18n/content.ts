@@ -43,9 +43,12 @@ export const contentByLocale: Record<Locale, Content> = {
     pages: {
     projects: [
     { type: "projects", id: "repos", title: "Repos", items: [
-      { name: "repo 名稱", summary: "一行摘要", description: "詳細說明",
-        stack: ["Python"], highlights: ["重點"],
-        href: "https://網站(可省略)", github: "https://github.com/zanen821/repo名稱" },
+      { name: "MCDM System", summary: "Multi-Criteria Decision Making System", description: "In this multi-criteria decision-making system, decision-makers can freely select decision-making methods. Once a method is applied, the system automatically calculates the performance of each alternative. Furthermore, it supports the flexible combination and comparison of various weighting schemes and performance evaluation methods.",
+      stack: ["Python"], highlights: ["MCDM", "Decision Science", "Data Science"],
+      href: "https://github.com/zanen821/mcdm-system", github: "https://github.com/zanen821/mcdm-system" },
+      { name: "zanen", summary: "Zanen's Portfolio", description: "This is my portfolio website, developed using the Astro framework, supporting multi-language switching and adaptive display on different devices.",
+      stack: ["TypeScript", "Astro","CSS,JavaScript"], highlights: ["Portfolio"],
+      href: "https://github.com/zanen821/zanen", github: "https://github.com/zanen821/zanen" }
      ] },
     ],
     experience: [
@@ -83,9 +86,12 @@ export const contentByLocale: Record<Locale, Content> = {
     pages: {
       projects: [
         { type: "projects", id: "repos", title: "Repos", items: [
-        { name: "repo 名稱", summary: "一行摘要", description: "詳細說明",
-      stack: ["Python"], highlights: ["重點"],
-      href: "https://網站(可省略)", github: "https://github.com/zanen821/repo名稱" },] },
+        { name: "MCDM System", summary: "多準則決策系統", description: "多準則決策的系統，決策者可自由挑選，決策方法，放入放入系統可以直接算出各方案績效，並支援不同權重法與績效評估法自由組合比較。",
+        stack: ["Python"], highlights: ["MCDM", "Decision Science", "Data Science"],
+        href: "https://github.com/zanen821/mcdm-system", github: "https://github.com/zanen821/mcdm-system" },
+      { name: "zanen", summary: "Zanen's 履歷網站", description: "這是我的履歷網站，使用Astro框架開發，支援多語系切換，並且可以在不同裝置上自適應顯示。",
+        stack: ["TypeScript", "Astro","CSS,JavaScript"], highlights: ["Portfolio"],
+        href: "https://github.com/zanen821/zanen", github: "https://github.com/zanen821/zanen" }] },
   ],
   experience: [
     { type: "list", id: "experience", title: "Experience", items: [
